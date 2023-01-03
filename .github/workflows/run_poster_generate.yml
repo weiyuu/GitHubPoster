@@ -123,7 +123,11 @@ jobs:
         if: contains(env.TYPE, 'notion')
         run: |
           python3 -m github_poster notion --notion_token "${{ secrets.NOTION_TOKEN }}" --database_id "${{ secrets.NOTION_DATABASE_ID }}" --prop_name "${{ secrets.NOTION_PROP_NAME }}" --me ${{ env.ME }}
-
+          
+      - name: Run sync weread script
+        if: contains(env.TYPE, 'weread')
+        run: |
+          python3 -m github_poster weread --weread_cookie "pgv_pvid=4040592328; pac_uid=0_5566428096ba7; iip=0; ptui_loginuin=871728910; RK=BW3IMmXkGq; ptcz=0bce6ee3c45e6ab5983d81146d433bf30e7c8c05bd2f0e257042d1fce1f3d85c; fqm_pvqid=ee63debe-c653-4100-bc71-141d9306ae88; eas_sid=4156R7S1j3d377t923w1o6K0J7; wr_gid=245883622; wr_vid=12007826; wr_skey=_xiLNpCE; wr_pf=0; wr_rt=web@IrCrgbitqR6qWFg74o7_WL; wr_localvid=258321806b7399225835e87; wr_name=weiyuu; wr_avatar=https://thirdwx.qlogo.cn/mmopen/vi_32/poVaiaqvI0ibMvtpj6U5ribEibysnslf9F33tiaxI1cMic9Uh76RRANibqFxKOEAd0NrOBuJ3TTrtAZNz7KCyFiaIuhicGw/132; wr_gender=1" --year 2020-2022 --me "weiyuu95"
       # change the types to yours
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
